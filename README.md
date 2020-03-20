@@ -10,6 +10,11 @@ This is my QMK configuration for HHKB2 keyboard. I use Hasu alternative programm
 6. Press Flash. ![Flashing](images/flashing.png)
 7. Controller will exit programming mode automatically after the end of the flashing procedure.
 
-# Layout
-Mac-flavored keymap, no lefthand side Ctrl:
+# Linux layout
+No lefthand side Meta:
+![Layout](images/hhkb-abu-lin.png)
+
+# Mac layout
+No lefthand side Ctrl:
 ![Layout](images/hhkb-abu-mac.png)
+
