@@ -20,7 +20,7 @@ enum anne_pro_layers {
 * |-----------------------------------------------------------------------------------------+
 * | Shift      |  z  |  x  |  c  |  v  |  b  |  n  |  m  |  ,  |  .  |  /  |    Shift       |
 * |-----------------------------------------------------------------------------------------+
-* | LGUI  |  LAlt | MO(1) |               space             |  RCtl |  RAtl  |MO(1) | RGUI  |
+* | LGUI  |  LAlt | MO(1) |               space             |  RCtl |  RAtl  |MO(1) | LGUI  |
 * \-----------------------------------------------------------------------------------------/
 */
  const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -36,45 +36,77 @@ enum anne_pro_layers {
   * ,-----------------------------------------------------------------------------------------.
   * | Scr |  F1 |  F2 |  F3 |  F4 |  F5 |  F6 |  F7 |  F8 |  F9 | F10 | F11 | F12 |       \   |
   * |-----------------------------------------------------------------------------------------+
-  * | Tab    |     |     |     |     |     |     |     |     |     |    |      |     |  DEL   |
+  * | Tab    |LED ON|LEDFF|    |     |     |     |     |     |     |    |      |     |  DEL   |
   * |-----------------------------------------------------------------------------------------+
-  * | LCtrl   |     |     |     |     |     |LEFT |DOWN | UP  |RIGHT|     |     |    Enter    |
+  * | LCtrl   |LEDIN|LEDSP|     |     |     |LEFT |DOWN | UP  |RIGHT|     |     |    Enter    |
   * |-----------------------------------------------------------------------------------------+
-  * | Shift      |     |     |     |     |НОМЕ | END |     |     |     |     |   RShift       |
+  * | Shift      |     |     |     |     |     | HOME| END |     |     |     |   RShift       |
   * |-----------------------------------------------------------------------------------------+
-  * | LGUI  |  LAlt | MO(1) |               space             |  RCtl  | RAlt | MO(1) | RGUI  |
+  * | LGUI  |  LAlt | MO(1) |               space             |  RCtl  | RAlt | MO(1) | LGUI  |
   * \-----------------------------------------------------------------------------------------/
   *
   */
- [_FN1_LAYER] = KEYMAP( /* Base */
-    KC_PSCR, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_BSLS,
-    KC_TAB, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL,
-    KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, KC_TRNS, KC_TRNS, KC_ENT,
-    KC_LSFT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_END, KC_TRNS, KC_TRNS, KC_TRNS, KC_RSFT,
-    KC_LGUI, KC_LALT, MO(_FN1_LAYER), KC_SPC, KC_RCTL, KC_RALT, MO(_FN1_LAYER), KC_RGUI
+ [_FN1_LAYER] = KEYMAP(
+    KC_PSCR, KC_F1,                    KC_F2,           KC_F3,   KC_F4,   KC_F5,   KC_F6,          KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,  KC_F12,  KC_BSLS,
+    KC_TAB,  KC_AP_LED_ON,             KC_AP_LED_OFF,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL,
+    KC_LCTL, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT,        KC_DOWN, KC_UP,   KC_RIGHT, KC_TRNS, KC_TRNS, KC_ENT,
+    KC_LSFT, KC_TRNS,                  KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME,        KC_END,  KC_TRNS, KC_TRNS,  KC_TRNS, KC_RSFT,
+    KC_LGUI, KC_LALT,                  MO(_FN1_LAYER),  KC_SPC,  KC_RCTL, KC_RALT, MO(_FN1_LAYER), KC_LGUI
 )
 };
 const uint16_t keymaps_size = sizeof(keymaps);
 
+
 void matrix_init_user(void) {
-  
+
 }
 
 void matrix_scan_user(void) {
 }
 
-// Code to run after initializing the keyboard
 void keyboard_post_init_user(void) {
-    // Here are two common functions that you can use. For more LED functions, refer to the file "qmk_ap2_led.h"
-
-    // annepro2-shine disables LEDs by default. Uncomment this function to enable them at startup.
-    // annepro2LedEnable();
-
-    // Additionally, it also chooses the first LED profile by default. Refer to the "profiles" array in main.c in
-    // annepro2-shine to see the order. Replace "i" with the index of your preferred profile. (i.e the RED profile is index 0)
-    // annepro2LedSetProfile(i);
+    annepro2LedEnable(); // annepro2-shine disables LEDs by default
+    /* 
+       Number of speed levels: 4
+       Number of backlight levels: 8
+       Profiles:
+        0  {white, {0, 0, 0, 0}, NULL, NULL},
+        1  {red, {0, 0, 0, 0}, NULL, NULL},
+        2  {green, {0, 0, 0, 0}, NULL, NULL},
+        3  {blue, {0, 0, 0, 0}, NULL, NULL},
+        4  {rainbowHorizontal, {0, 0, 0, 0}, NULL, NULL},
+        5  {rainbowVertical, {0, 0, 0, 0}, NULL, NULL},
+        6  {animatedRainbowVertical, {35, 28, 21, 14}, NULL, NULL},
+        7  {animatedRainbowFlow, {7, 5, 2, 1}, NULL, NULL},
+        8  {animatedRainbowWaterfall, {7, 5, 2, 1}, NULL, NULL},
+        9  {animatedBreathing, {5, 3, 2, 1}, NULL, NULL},
+        10 {animatedWave, {5, 3, 2, 1}, NULL, NULL},
+        11 {animatedSpectrum, {11, 6, 4, 1}, NULL, NULL},
+        12 {reactiveFade, {4, 3, 2, 1}, reactiveFadeKeypress, reactiveFadeInit},
+        13 {reactivePulse, {4, 3, 2, 1}, reactivePulseKeypress, reactivePulseInit},
+        14 {reactiveTerm, {1, 2, 3, 4}, reactiveTermKeypress, reactiveTermInit}};
+    */
+    annepro2LedSetProfile(4);
 }
 
 layer_state_t layer_state_set_user(layer_state_t layer) {
-    return layer;
+  const annepro2Led_t color = {
+          .p.red = 0x00,
+          .p.green = 0xff,
+          .p.blue = 0x00,
+          .p.alpha = 0xff
+      };
+
+  switch(get_highest_layer(layer)) {
+    case _FN1_LAYER:
+      annepro2LedMaskSetKey(2, 6, color);
+      annepro2LedMaskSetKey(2, 7, color);
+      annepro2LedMaskSetKey(2, 8, color);
+      annepro2LedMaskSetKey(2, 9, color);
+      break;
+    default:
+      annepro2LedResetForegroundColor();
+      break;
+  }
+  return layer;
 }
