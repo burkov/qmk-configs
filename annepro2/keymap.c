@@ -20,7 +20,7 @@ enum anne_pro_layers {
 * |-----------------------------------------------------------------------------------------+
 * | Shift      |  z  |  x  |  c  |  v  |  b  |  n  |  m  |  ,  |  .  |  /  |    Shift       |
 * |-----------------------------------------------------------------------------------------+
-* | LGUI  |  LAlt | MO(1) |               space             |  RCtl |  RAtl  |MO(1) | LGUI  |
+* | \     |  LAlt | MO(1) |               space             |  RCtl |  RAtl  |MO(1) | LGUI  |
 * \-----------------------------------------------------------------------------------------/
 */
  const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -29,29 +29,29 @@ enum anne_pro_layers {
     KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSPC,
     KC_LCTL, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT,
     KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
-    KC_LGUI, KC_LALT, MO(_FN1_LAYER), KC_SPC, KC_RCTL, KC_RALT, MO(_FN1_LAYER), KC_LGUI
+    KC_BSLS, KC_LALT, MO(_FN1_LAYER), KC_SPC, KC_RCTL, KC_RALT, MO(_FN1_LAYER), KC_LGUI
 ),
   /*
   * Layer _FN1_LAYER
   * ,-----------------------------------------------------------------------------------------.
-  * | Scr |  F1 |  F2 |  F3 |  F4 |  F5 |  F6 |  F7 |  F8 |  F9 | F10 | F11 | F12 |       \   |
+  * | Scr |  F1 |  F2 |  F3 |  F4 |  F5 |  F6 |  F7 |  F8 |  F9 | F10 | F11 | F12 |       `   |
   * |-----------------------------------------------------------------------------------------+
-  * | Tab    |LED ON|LEDFF|    |     |     |     |     |     |     |    |      |     |  DEL   |
+  * | Tab    |LED ON|LEDFF|    |     |     |     |     |     |     |    | VOLU | PLAY|  DEL   |
   * |-----------------------------------------------------------------------------------------+
-  * | LCtrl   |LEDIN|LEDSP|     |     |     |LEFT |DOWN | UP  |RIGHT|     |     |    Enter    |
+  * | LCtrl   |LEDIN|LEDSP|     |     |     |LEFT |DOWN | UP  |RIGHT|     | VOLD |   Enter    |
   * |-----------------------------------------------------------------------------------------+
   * | Shift      |     |     |     |     |     | HOME| END |     |     |     |   RShift       |
   * |-----------------------------------------------------------------------------------------+
-  * | LGUI  |  LAlt | MO(1) |               space             |  RCtl  | RAlt | MO(1) | LGUI  |
+  * | \     |  LAlt | MO(1) |               space             |  RCtl  | RAlt | MO(1) | LGUI  |
   * \-----------------------------------------------------------------------------------------/
   *
   */
  [_FN1_LAYER] = KEYMAP(
-    KC_PSCR, KC_F1,                    KC_F2,           KC_F3,   KC_F4,   KC_F5,   KC_F6,          KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,  KC_F12,  KC_BSLS,
-    KC_TAB,  KC_AP_LED_ON,             KC_AP_LED_OFF,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL,
-    KC_LCTL, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT,        KC_DOWN, KC_UP,   KC_RIGHT, KC_TRNS, KC_TRNS, KC_ENT,
+    KC_PSCR, KC_F1,                    KC_F2,           KC_F3,   KC_F4,   KC_F5,   KC_F6,          KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,  KC_F12,  KC_GRV,
+    KC_TAB,  KC_AP_LED_ON,             KC_AP_LED_OFF,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_VOLU, KC_MPLY, KC_DEL,
+    KC_LCTL, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT,        KC_DOWN, KC_UP,   KC_RIGHT, KC_TRNS, KC_VOLD, KC_ENT,
     KC_LSFT, KC_TRNS,                  KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME,        KC_END,  KC_TRNS, KC_TRNS,  KC_TRNS, KC_RSFT,
-    KC_LGUI, KC_LALT,                  MO(_FN1_LAYER),  KC_SPC,  KC_RCTL, KC_RALT, MO(_FN1_LAYER), KC_LGUI
+    KC_BSLS, KC_LALT,                  MO(_FN1_LAYER),  KC_SPC,  KC_RCTL, KC_RALT, MO(_FN1_LAYER), KC_LGUI
 )
 };
 const uint16_t keymaps_size = sizeof(keymaps);
